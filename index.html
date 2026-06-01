@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>신원호 포트폴리오</title>
+    <meta
+      name="description"
+      content="프로젝트 중심으로 정리한 신원호의 포트폴리오 페이지"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand-mark" href="#top" aria-label="맨 위로 이동">SW</a>
+        <nav class="site-nav" aria-label="주요 섹션">
+          <a href="#profile">Profile</a>
+          <a href="#stack">Stack</a>
+          <a href="#project-overview">Projects</a>
+          <a href="#project-details">Details</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero section reveal">
+          <div class="hero-copy">
+            <p class="eyebrow">GitHub Pages Portfolio</p>
+            <h1 id="hero-title"></h1>
+            <p id="hero-description" class="hero-description"></p>
+            <div class="hero-actions">
+              <a class="button primary" href="#project-overview">프로젝트 둘러보기</a>
+              <a class="button secondary" href="#project-details">상세 설명 보기</a>
+            </div>
+            <div id="hero-metrics" class="hero-metrics"></div>
+          </div>
+
+          <aside id="profile" class="profile-placeholder">
+            <p class="eyebrow">Profile Placeholder</p>
+            <h2>프로필 영역 준비 중</h2>
+            <p>
+              프로필 사진, 한 줄 소개, 연락처 정보는 추후 정리해서 채울 예정입니다.
+            </p>
+            <ul class="placeholder-list">
+              <li>사진 영역</li>
+              <li>이름 / 한 줄 소개</li>
+              <li>이메일 / GitHub / 연락처</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section id="stack" class="section reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Core Stack</p>
+            <h2>기본 기술 스택</h2>
+            <p class="section-description">
+              게임 클라이언트, 웹 백엔드, 데이터 처리 경험을 한 화면에서 볼 수 있도록
+              정리한 기술 스택입니다.
+            </p>
+          </div>
+          <div id="stack-grid" class="stack-grid"></div>
+        </section>
+
+        <section id="project-overview" class="section reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Project Overview</p>
+            <h2>프로젝트 구성</h2>
+            <p class="section-description">
+              게임 프로젝트와 비게임 프로젝트를 나누어, 어떤 경험을 어떤 영역에서
+              쌓아왔는지 빠르게 훑을 수 있게 구성했습니다.
+            </p>
+          </div>
+
+          <div class="overview-groups">
+            <div class="overview-group">
+              <div class="group-title-row">
+                <h3>게임 프로젝트</h3>
+                <span class="group-count" id="game-project-count"></span>
+              </div>
+              <div id="game-project-cards" class="overview-grid"></div>
+            </div>
+
+            <div class="overview-group">
+              <div class="group-title-row">
+                <h3>비게임 프로젝트</h3>
+                <span class="group-count" id="non-game-project-count"></span>
+              </div>
+              <div id="non-game-project-cards" class="overview-grid"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="project-details" class="section">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Project Details</p>
+            <h2>프로젝트 상세</h2>
+            <p class="section-description">
+              각 프로젝트에서 맡은 역할, 구현한 시스템, 트러블슈팅, 서비스 이미지를
+              순서대로 정리했습니다.
+            </p>
+          </div>
+
+          <div id="project-detail-list" class="project-detail-list"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>신원호 포트폴리오 페이지</p>
+        <p>프로젝트 중심 정리본을 기반으로 구성한 GitHub Pages 사이트</p>
+      </footer>
+    </div>
+
+    <script src="./assets/projects.js"></script>
+    <script src="./assets/app.js"></script>
+  </body>
+</html>
