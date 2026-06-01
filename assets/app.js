@@ -4,13 +4,14 @@
     return;
   }
 
-  const projectList = data.projects || [];
+  const projectList = sortProjects(data.projects || []);
   const gameProjects = projectList.filter((project) => project.category === "game");
   const nonGameProjects = projectList.filter((project) => project.category === "non-game");
 
   const heroTitle = document.getElementById("hero-title");
   const heroDescription = document.getElementById("hero-description");
   const heroMetrics = document.getElementById("hero-metrics");
+  const profileLinks = document.getElementById("profile-links");
   const stackGrid = document.getElementById("stack-grid");
   const gameProjectCards = document.getElementById("game-project-cards");
   const nonGameProjectCards = document.getElementById("non-game-project-cards");
@@ -22,33 +23,43 @@
   document.getElementById("game-project-count").textContent = `${gameProjects.length}개`;
   document.getElementById("non-game-project-count").textContent = `${nonGameProjects.length}개`;
 
-  const uniqueStackCount = new Set(projectList.flatMap((project) => project.stack)).size;
-  const totalImageCount = projectList.reduce((count, project) => count + project.images.length, 0);
+  heroMetrics.innerHTML = `
+    <div class="metric-card">
+      <strong>${String(projectList.length).padStart(2, "0")}</strong>
+      <span>Projects</span>
+    </div>
+  `;
 
-  const metrics = [
-    { label: "Projects", value: String(projectList.length).padStart(2, "0") },
-    { label: "Game Focus", value: `${gameProjects.length} / ${projectList.length}` },
-    { label: "Core Stacks", value: String(uniqueStackCount).padStart(2, "0") },
-    { label: "Media Assets", value: String(totalImageCount).padStart(2, "0") },
-  ];
-
-  heroMetrics.innerHTML = metrics
+  profileLinks.innerHTML = (data.profile?.contacts || [])
     .map(
-      (metric) => `
-        <div class="metric-card">
-          <strong>${metric.value}</strong>
-          <span>${metric.label}</span>
-        </div>
+      (contact) => `
+        <a class="contact-card" href="${contact.href}" ${
+          contact.href.startsWith("http") ? 'target="_blank" rel="noreferrer"' : ""
+        }>
+          <span class="contact-label">${contact.label}</span>
+          <strong>${contact.value}</strong>
+        </a>
       `
     )
     .join("");
 
   stackGrid.innerHTML = data.techStack
     .map(
-      (stack) => `
-        <div class="stack-chip">
-          <span>${stack}</span>
-        </div>
+      (group) => `
+        <section class="stack-group">
+          <h3>${group.label}</h3>
+          <div class="stack-chip-row">
+            ${group.items
+              .map(
+                (item) => `
+                  <div class="stack-chip">
+                    <span>${item}</span>
+                  </div>
+                `
+              )
+              .join("")}
+          </div>
+        </section>
       `
     )
     .join("");
@@ -195,5 +206,24 @@
     );
 
     revealTargets.forEach((target) => observer.observe(target));
+  }
+
+  function sortProjects(projects) {
+    return [...projects].sort((left, right) => {
+      if (left.category !== right.category) {
+        return left.category === "game" ? -1 : 1;
+      }
+
+      return getProjectStart(left.period) - getProjectStart(right.period);
+    });
+  }
+
+  function getProjectStart(period) {
+    const match = period.match(/\d{4}\.\d{2}\.\d{2}/);
+    if (!match) {
+      return Number.MAX_SAFE_INTEGER;
+    }
+
+    return Number(match[0].replaceAll(".", ""));
   }
 })();

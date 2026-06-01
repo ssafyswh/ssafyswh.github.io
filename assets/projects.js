@@ -2,17 +2,39 @@ window.PORTFOLIO_DATA = {
   hero: {
     title: "즐거움을 구현하고 싶은 개발자, 신원호입니다.",
     description:
-      "프로필 정보는 추후 보강하고, 우선은 프로젝트 중심으로 강점이 드러나도록 정리한 포트폴리오 페이지입니다. 게임 프로젝트를 앞세우고, 그 아래에 실시간 데이터 처리와 추천 시스템 경험을 보여주는 비게임 프로젝트를 배치했습니다.",
+      "게임 프로젝트를 앞세우고, 그 아래에 실시간 데이터 처리와 추천 시스템 경험을 보여주는 비게임 프로젝트를 배치해 작업 흐름과 구현 역량이 자연스럽게 이어지도록 구성한 포트폴리오 페이지입니다.",
+  },
+  profile: {
+    contacts: [
+      {
+        label: "Email",
+        value: "swh4078@gmail.com",
+        href: "mailto:swh4078@gmail.com",
+      },
+      {
+        label: "GitHub",
+        value: "github.com/ssafyswh",
+        href: "https://github.com/ssafyswh",
+      },
+    ],
   },
   techStack: [
-    "Unity Engine (C#)",
-    "Unreal Engine (C++)",
-    "Spring Boot (Java)",
-    "Django (Python)",
-    "Vue (JavaScript)",
-    "Vite",
-    "PostgreSQL",
-    "Redis",
+    {
+      label: "Game Client",
+      items: ["Unity Engine (C#)", "Unreal Engine (C++)"],
+    },
+    {
+      label: "Backend",
+      items: ["Spring Boot (Java)", "Django (Python)"],
+    },
+    {
+      label: "Frontend",
+      items: ["Vue (JavaScript)"],
+    },
+    {
+      label: "Data",
+      items: ["PostgreSQL", "Redis"],
+    },
   ],
   projects: [
     {
@@ -183,7 +205,7 @@ window.PORTFOLIO_DATA = {
       role: "풀스택 개발",
       scope: "프론트엔드와 백엔드 전반의 추천, 리뷰 요약, 유연 검색, 상세 조회 흐름 구현",
       highlight: "Steam 활동 데이터를 기반으로 추천, 리뷰 요약, 검색 보조가 하나의 탐색 흐름으로 이어지도록 서비스 전반 연결",
-      stack: ["Django (Python)", "Vue (JavaScript)", "Vite"],
+      stack: ["Django (Python)", "Vue (JavaScript)"],
       details: [
         "steam-ecyce는 사용자의 Steam 활동 데이터를 기반으로 맞춤형 게임 추천을 제공하는 웹 서비스입니다. 사용자의 게임 이용 이력과 리뷰 데이터를 활용해 추천 결과를 제공하고, 게임 탐색 과정에서 필요한 리뷰 요약 및 검색 보조 기능을 함께 제공하는 구조로 구성했습니다. 게임 자체를 만드는 프로젝트는 아니지만, 게임 데이터를 어떤 방식으로 가공해 사용자 경험으로 연결할 수 있는지 고민한 프로젝트였습니다.",
         "저는 프론트엔드와 백엔드를 모두 담당하며 추천, 검색, 상세 조회 흐름을 전체적으로 연결했습니다. 주요 구현 내용은 LLM 기반 게임 추천 기능, LLM 기반 게임 리뷰 요약 기능, 오타나 유사어를 보완하는 유연 검색 기능입니다. 특히 사용자가 많은 게임 정보를 빠르게 탐색하고 이해할 수 있도록, 추천과 요약, 검색 기능이 하나의 흐름으로 이어지도록 구성하는 데 집중했습니다.",
