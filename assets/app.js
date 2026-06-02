@@ -17,7 +17,9 @@
   const nonGameProjectCards = document.getElementById("non-game-project-cards");
   const projectDetailList = document.getElementById("project-detail-list");
 
-  heroTitle.textContent = data.hero.title;
+  heroTitle.innerHTML = (data.hero.titleLines || [data.hero.title || ""])
+    .map((line) => `<span>${line}</span>`)
+    .join("<br />");
   heroDescription.textContent = data.hero.description;
 
   document.getElementById("game-project-count").textContent = `${gameProjects.length}개`;
