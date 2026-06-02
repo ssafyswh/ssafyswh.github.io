@@ -17,8 +17,13 @@
   const nonGameProjectCards = document.getElementById("non-game-project-cards");
   const projectDetailList = document.getElementById("project-detail-list");
 
-  heroTitle.innerHTML = (data.hero.titleLines || [data.hero.title || ""])
-    .map((line) => `<span>${line}</span>`)
+  const heroLines = (data.hero.titleLines || [data.hero.title || ""])
+    .flatMap((line) => String(line).split(/\n+/))
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  heroTitle.innerHTML = heroLines
+    .map((line) => `<span class="hero-title-line">${line}</span>`)
     .join("<br />");
   heroDescription.textContent = data.hero.description;
 
